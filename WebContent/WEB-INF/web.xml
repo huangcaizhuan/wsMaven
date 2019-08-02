@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <!-- 启动cxf框架的核心控制器，并启动spring容器，完成WEB服务的注册 -->
+  <servlet>
+  	<servlet-name>cxf</servlet-name>
+  	<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+  	<init-param>
+  		<param-name>config-location</param-name>
+  		<param-value>classpath:cxf-servlet.xml</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>cxf</servlet-name>
+  	<!-- 需要区分：与SpringMVC框架的路径请求 -->
+  	<url-pattern>/services/*</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

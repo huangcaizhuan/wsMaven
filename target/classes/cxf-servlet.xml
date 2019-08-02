@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:jaxws="http://cxf.apache.org/jaxws"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+ 
+ 
+	<!-- 在spring容器中，声明WEB服务，id随便起一个名字，主要是作为被spring识别的id， 
+     serviceClass表示你定义的服务接口，address表示起一个作为以后访问的路径-->
+	<jaxws:server id="BlackListService" serviceClass="com.unicom.webservice.blackList.BlackListService" address="/BlackListService">
+		
+		<!-- 该接口的真实实现类 -->
+		<jaxws:serviceBean>
+			<bean class="com.unicom.webservice.blackList.BlackListServiceImpl"></bean>
+		</jaxws:serviceBean>
+	
+	</jaxws:server>
+ 
+ 
+	<!-- 如果有多个服务，就继续按照上述方式，进行发布即可 -->
+ </beans>
+ 
